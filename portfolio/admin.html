@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Hub Admin Dashboard</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind for Dark Mode -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617; /* slate-950 */
+            color: #f8fafc; /* slate-50 */
+        }
+    </style>
+</head>
+<body class="min-h-screen flex antialiased">
+
+    <!-- Sidebar -->
+    <aside class="w-64 border-r border-slate-800 bg-slate-950 flex flex-col hidden md:flex">
+        <div class="h-16 flex items-center px-6 border-b border-slate-800">
+            <span class="text-xl font-bold tracking-tighter text-white">WEB HUB <span class="text-blue-500">ADMIN</span></span>
+        </div>
+        <div class="flex-grow py-6 px-4 space-y-1">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg bg-blue-600/10 text-blue-500 font-medium">
+                <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+                Dashboard
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:bg-slate-900 hover:text-white transition-colors">
+                <i data-lucide="folder-kanban" class="w-5 h-5"></i>
+                Projects
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:bg-slate-900 hover:text-white transition-colors">
+                <i data-lucide="settings" class="w-5 h-5"></i>
+                Settings
+            </a>
+        </div>
+        <div class="p-4 border-t border-slate-800">
+            <button class="flex items-center gap-3 px-4 py-3 w-full rounded-lg text-slate-400 hover:bg-red-500/10 hover:text-red-500 transition-colors">
+                <i data-lucide="log-out" class="w-5 h-5"></i>
+                Sign Out
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex flex-col min-h-screen overflow-hidden">
+        
+        <!-- Header -->
+        <header class="h-16 border-b border-slate-800 bg-slate-950/50 flex items-center justify-between px-8">
+            <h1 class="text-xl font-semibold text-white">Overview</h1>
+            <div class="flex items-center gap-4">
+                <button class="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                    <i data-lucide="plus" class="w-4 h-4"></i>
+                    New Project
+                </button>
+                <div class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center">
+                    <i data-lucide="user" class="w-4 h-4 text-slate-400"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="flex-grow p-8 overflow-y-auto">
+            
+            <!-- Stats Row -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-slate-400 font-medium">Total Projects</h3>
+                        <i data-lucide="folder" class="w-5 h-5 text-blue-500"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-white">12</div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-slate-400 font-medium">Published</h3>
+                        <i data-lucide="globe" class="w-5 h-5 text-emerald-500"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-white">9</div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-slate-400 font-medium">Drafts</h3>
+                        <i data-lucide="file-edit" class="w-5 h-5 text-amber-500"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-white">3</div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-slate-400 font-medium">Featured</h3>
+                        <i data-lucide="star" class="w-5 h-5 text-purple-500"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-white">4</div>
+                </div>
+            </div>
+
+            <!-- Recent Projects Table -->
+            <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
+                <div class="px-6 py-4 border-b border-slate-800 flex justify-between items-center">
+                    <h2 class="text-lg font-semibold text-white">Recent Projects</h2>
+                    <a href="#" class="text-sm text-blue-500 hover:text-blue-400 font-medium">View all</a>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm text-slate-400">
+                        <thead class="bg-slate-950/50 text-slate-300 uppercase font-medium">
+                            <tr>
+                                <th class="px-6 py-4">Project Details</th>
+                                <th class="px-6 py-4">Status</th>
+                                <th class="px-6 py-4">Featured</th>
+                                <th class="px-6 py-4 text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/50">
+                            <tr class="hover:bg-slate-800/50 transition-colors">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-12 h-12 rounded-lg bg-slate-800 border border-slate-700 overflow-hidden">
+                                            <div class="w-full h-full bg-gradient-to-br from-blue-900 to-slate-900 flex items-center justify-center text-xs font-bold text-slate-500">HT</div>
+                                        </div>
+                                        <div>
+                                            <div class="font-medium text-white text-base">Honeymoonerz Travel</div>
+                                            <div class="text-slate-500">Travel & Tourism</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
+                                        <div class="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+                                        Published
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <i data-lucide="star" class="w-5 h-5 text-yellow-500 fill-yellow-500"></i>
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <div class="flex items-center justify-end gap-2">
+                                        <button class="p-2 rounded-lg hover:bg-slate-700 text-slate-400 transition-colors"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
+                                        <button class="p-2 rounded-lg hover:bg-red-500/10 text-slate-400 hover:text-red-500 transition-colors"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/50 transition-colors">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-12 h-12 rounded-lg bg-slate-800 border border-slate-700 overflow-hidden">
+                                            <div class="w-full h-full bg-gradient-to-br from-orange-900 to-slate-900 flex items-center justify-center text-xs font-bold text-slate-500">OW</div>
+                                        </div>
+                                        <div>
+                                            <div class="font-medium text-white text-base">Ora Painting Workshop</div>
+                                            <div class="text-slate-500">Art & Workshops</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
+                                        <div class="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+                                        Published
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <i data-lucide="star" class="w-5 h-5 text-slate-600"></i>
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <div class="flex items-center justify-end gap-2">
+                                        <button class="p-2 rounded-lg hover:bg-slate-700 text-slate-400 transition-colors"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
+                                        <button class="p-2 rounded-lg hover:bg-red-500/10 text-slate-400 hover:text-red-500 transition-colors"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/50 transition-colors">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-12 h-12 rounded-lg bg-slate-800 border border-slate-700 border-dashed flex items-center justify-center">
+                                            <i data-lucide="image" class="w-5 h-5 text-slate-500"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-medium text-white text-base">E-commerce Dashboard</div>
+                                            <div class="text-slate-500">Internal Tool</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-amber-500/10 text-amber-500 border border-amber-500/20">
+                                        <div class="w-1.5 h-1.5 rounded-full bg-amber-500"></div>
+                                        Draft
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <i data-lucide="star" class="w-5 h-5 text-slate-600"></i>
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <div class="flex items-center justify-end gap-2">
+                                        <button class="p-2 rounded-lg hover:bg-slate-700 text-slate-400 transition-colors"><i data-lucide="edit-2" class="w-4 h-4"></i></button>
+                                        <button class="p-2 rounded-lg hover:bg-red-500/10 text-slate-400 hover:text-red-500 transition-colors"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+      lucide.createIcons();
+    </script>
+</body>
+</html>
